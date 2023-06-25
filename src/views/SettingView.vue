@@ -1,18 +1,16 @@
 <template>
-  <HomeComponent/>
+  <SettingComponent/>
 </template>
 
 <script>
-import HomeComponent from '../components/Home.vue'
+import SettingComponent from '../components/Setting.vue'
 export default {
-  name: "HomeViewComponent",
+  name: "SettingViewComponent",
   created() {},
   data() {
     return {};
   },
-  components:{
-    HomeComponent
-  },
+  components:{SettingComponent},
   props: {},
   methods: {},
 };

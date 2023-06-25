@@ -1,17 +1,13 @@
 <template>
-  <HomeComponent/>
+  <div></div>
 </template>
 
 <script>
-import HomeComponent from '../components/Home.vue'
 export default {
-  name: "HomeViewComponent",
+  name: "Test",
   created() {},
   data() {
     return {};
-  },
-  components:{
-    HomeComponent
   },
   props: {},
   methods: {},

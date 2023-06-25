@@ -1,17 +1,17 @@
 <template>
-  <HomeComponent/>
+  <PesananComponent/>
 </template>
 
 <script>
-import HomeComponent from '../components/Home.vue'
+import PesananComponent from '../components/Pesanan.vue'
 export default {
-  name: "HomeViewComponent",
+  name: "PesananViewComponent",
   created() {},
   data() {
     return {};
   },
   components:{
-    HomeComponent
+    PesananComponent
   },
   props: {},
   methods: {},
