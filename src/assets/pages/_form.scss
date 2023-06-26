@@ -1,7 +1,9 @@
-.group-from{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    margin-bottom: 15px;
+#form{
+    .group-from{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        margin-bottom: 15px;
+    }
 }
