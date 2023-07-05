@@ -10,10 +10,6 @@
         <p>Layanan Kami</p>
       </div>
       <div class="contain-main">
-        <div @click="openModal('kiloan')" id="openModalBtn" class="square-icon">
-          <img src="../assets/gambar/icon/weight.svg" alt="weight" />
-          <p>Kilogram</p>
-        </div>
         <div @click="openModal('express')" class="square-icon">
           <img src="../assets/gambar/icon/express-delivery.svg" alt="" />
           <p>Express</p>
@@ -71,7 +67,7 @@
         <div class="modal-content">
           <span @click="closeModal" class="close">&times;</span>
           <h2>{{ popupTitle }}</h2>
-          <form id="form" v-if="currentForm == 'kiloan'">
+          <form id="form" v-if="currentForm == 'reguler'">
             <div class="group-from">
               <label for="photo">Ambil Photo</label>
               <input id="photo" type="file" />
@@ -87,36 +83,13 @@
               />
             </div>
             <div class="group-from">
-              <label for="location">Lokasi Penjemputan</label>
-              <select name="location" id="location">
-                <option value="">Pilih Lokasi</option>
-                <option id="openModalBtnLokasiDefault" value="default">
-                  Lokasi Default
+              <label for="paketreguler">paket</label>
+              <select name="paketreguler" id="paketreguler">
+                <option value="">Pilih paket</option>
+                <option  value="2hari">
+                  Paket 2 Hari
                 </option>
-                <option id="openModalBtnLokasiNow" value="localnow">Lokasi Terkini</option>
               </select>
-            </div>
-            <div class="group-from">
-              <div class="button-group-flex">
-                <button @click="closeModal" class="btn btn-batal">Batal</button>
-                <button class="btn btn-kirim">Pesan</button>
-              </div>
-            </div>
-          </form>
-          <form id="form" v-else-if="currentForm == 'reguler'">
-            <div class="group-from">
-              <label for="photo">Ambil Photo</label>
-              <input id="photo" type="file" />
-            </div>
-            <div class="group-from">
-              <label for="price_first">Harga Dasar Per Kilogram</label>
-              <input
-                type="text"
-                id="price_first"
-                name="price_first"
-                readonly
-                value="Rp8.000"
-              />
             </div>
             <div class="group-from">
               <label for="location">Lokasi Penjemputan</label>
@@ -151,13 +124,8 @@
               />
             </div>
             <div class="group-from">
-              <label for="paket-kilat">Paket Kilat</label>
-              <select name="paket" id="paketKilat">
-                <option value="">Pilih Paket</option>
-                <option value="">1 Hari</option>
-                <option value="">8 Jam</option>
-                <option value="">4 Jam</option>
-              </select>
+              <label for="paketkilat">Paket Kilat</label>
+              <input id="paketkilat" name="paketkilat" value="4 jam" readonly/>
             </div>
             <div class="group-from">
               <label for="location">Lokasi Penjemputan</label>
@@ -220,7 +188,7 @@
                 id="price_first"
                 name="price_first"
                 readonly
-                value="Rp8.000"
+                value="Rp4.000"
               />
             </div>
             <div class="group-from">
@@ -246,7 +214,7 @@
               <input id="photo" type="file" />
             </div>
             <div class="group-from">
-              <label for="price_first">Harga Dasar Per Kilogram</label>
+              <label for="price_first">Harga Dasar Per Meter</label>
               <input
                 type="text"
                 id="price_first"

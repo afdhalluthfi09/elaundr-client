@@ -31,16 +31,21 @@
         <span @click="closeModal" class="close">&times;</span>
           <h2>{{ popupTitle }}</h2>
           <form id="form" v-if="currentForm == 'profil'">
-            <div class="group-from">
-              <label for="photo">Ambil Photo</label>
-              <input id="photo" type="file" />
-            </div>
+            
             <div class="group-from">
               <label for="name">nama</label>
               <input
                 type="text"
                 id="name"
                 name="name"
+              />
+            </div>
+            <div class="group-from">
+              <label for="notelp">no telpon</label>
+              <input
+                type="text"
+                id="notelp"
+                name="notelp"
               />
             </div>
             <div class="group-from">
@@ -58,6 +63,15 @@
                 id="age"
                 name="age"
               />
+            </div>
+            <div class="group-from">
+              <label for="address">alamat</label>
+              <textarea
+                type="text"
+                id="address"
+                name="address"
+                width="200"
+              ></textarea>
             </div>
             <div class="group-from">
               <div class="button-group-flex">
