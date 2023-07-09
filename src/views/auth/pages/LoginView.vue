@@ -58,7 +58,7 @@ export default {
     submit(){
       this.$store.dispatch('auth/actionLogin',{payload:{email:this.from.email,password:this.from.password}})
         .then(()=>{
-            Swal('yey..', 'Selamat Datang.. berhasil masuk', 'succes');
+            Swal('yey..', 'Selamat Datang.. berhasil masuk', 'success');
             setTimeout(()=>{
               this.$router.push('/')
             },5000)

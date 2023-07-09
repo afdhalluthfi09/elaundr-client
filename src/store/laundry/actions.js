@@ -7,7 +7,8 @@ const actions ={
                 .get(`${baseUrl.getBaseUrl}/laundry`,{
                     headers:{
                         'Content-Type':'application/json',
-                        'Accept':'application/json'
+                        'Accept':'application/json',
+                        'Access-Control-Allow-Origin' :'*'
                     }
                 })
                 .then(response =>{
@@ -18,16 +19,27 @@ const actions ={
                     reject(error)
                 })
         })
+    },
+    actionAddLaundry:({rootGetters},{payload})=>{
+        // console.log(payload);
+        let baseUrl =rootGetters;
+        return new Promise ((resolve,reject)=>{
+            axios.post(`${baseUrl.getBaseUrl}/laundry`,payload,{
+                headers:{
+                    'Content-Type':'multipart/form-data',
+                    'Accept':'application/json',
+                    'Access-Control-Allow-Origin' :'*'
+                }
+            })
+            .then((response)=>{
+                resolve(response)
+            })
+            .catch((error)=>{
+                reject(error)
+            })
+        })
     }
-    /* costumer
-    weightFirst
-    weightSecond
-    photo
-    status
-    priceFirst
-    priceSecond
-    locationDefault
-    locationNow */
+
     // step 2 bagaiamana cara ambil location sekarang
 }
 
