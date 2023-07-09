@@ -1,9 +1,4 @@
 <template>
-  <div class="container-pesanan">
-    <!-- header -->
-    <HeaderComponent/>
-    <!-- status -->
-    <StatusComponent/>
     <!-- main -->
     <div class="main">
       <div class="message-title">Pesan Aktif</div>
@@ -26,14 +21,9 @@
         </ul>
       </div>
     </div>
-  </div>
-  <NavbarComponent/>
 </template>
 
 <script>
-import HeaderComponent from '../../../components/Header.vue'
-import StatusComponent from '../../../components/Status.vue'
-import NavbarComponent from '../../../components/Navbar.vue'
 
 export default {
   name: "PesananViewComponent",
@@ -46,11 +36,6 @@ export default {
         { name: "Item 3", description: "Pakaian Anda Sedang Di Jemput Sebentar Lagi Ke Lokasi Anda",noPesana: "0002142", status: "jemput",isExpanded: false },
       ],
     };
-  },
-  components:{
-    HeaderComponent,
-    StatusComponent,
-    NavbarComponent
   },
   props: {},
   methods: {

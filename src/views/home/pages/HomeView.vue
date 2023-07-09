@@ -1,9 +1,4 @@
 <template>
-  <div class="container-home">
-    <!-- header -->
-    <HeaderComponent />
-    <!-- status -->
-    <StatusComponent />
     <!-- main -->
     <div class="main">
       <div class="main-title">
@@ -93,12 +88,12 @@
             </div>
             <div class="group-from">
               <label for="location">Lokasi Penjemputan</label>
-              <select name="location" id="location">
+              <select @change="locationNow" name="location" id="location">
                 <option value="">Pilih Lokasi</option>
                 <option id="openModalBtnLokasiDefault" value="default">
                   Lokasi Default
                 </option>
-                <option id="openModalBtnLokasiNow" value="localnow">Lokasi Terkini</option>
+                <option id="openModalBtnLokasiNow"  value="localnow">Lokasi Terkini OI</option>
               </select>
             </div>
             <div class="group-from">
@@ -253,14 +248,9 @@
         </div>
       </div>
     </transition>
-  </div>
-  <NavbarComponent/>
 </template>
 
 <script>
-import HeaderComponent from '../../../components/Header.vue'
-import StatusComponent from '../../../components/Status.vue'
-import NavbarComponent from '../../../components/Navbar.vue'
 export default {
   name: "HomeViewComponent",
   created() {},
@@ -270,11 +260,6 @@ export default {
       currentForm: '',
       popupTitle: '',
     };
-  },
-  components:{
-    StatusComponent,
-    HeaderComponent,
-    NavbarComponent
   },
   props: {},
   methods: {
@@ -298,6 +283,30 @@ export default {
     closeModal() {
       this.isModalOpen = false;
     },
+    locationNow(event){
+      event.preventDefault();
+      // Inisialisasi peta
+      /* Latitude: -0.789275
+         Longitude: 113.921327 */
+         if ('geolocation' in navigator) {
+            
+            navigator.geolocation.getCurrentPosition(
+              position => {
+                const latitude = position.coords.latitude;
+                const longitude = position.coords.longitude;
+                console.log('Latitude:', latitude);
+                console.log('Longitude:', longitude);
+              },
+              error => {
+                // Mendapatkan posisi geografis pengguna gagal
+                console.error('Error getting location:', error);
+              }
+            );
+          } else {
+            console.error('Geolocation is not supported by this browser.');
+          }
+     
+    }
   },
 };
 </script>

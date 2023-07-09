@@ -19,6 +19,16 @@ const actions ={
                 })
         })
     }
+    /* costumer
+    weightFirst
+    weightSecond
+    photo
+    status
+    priceFirst
+    priceSecond
+    locationDefault
+    locationNow */
+    // step 2 bagaiamana cara ambil location sekarang
 }
 
 export default actions;

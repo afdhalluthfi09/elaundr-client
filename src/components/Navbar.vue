@@ -1,7 +1,7 @@
 <template>
   <div class="navbar">
     <div>
-      <router-link to="/">
+      <router-link to="/home">
         <img src="../assets/gambar/icon/iconhome.svg" alt="iconhome" />
         <p>Home</p>
       </router-link>

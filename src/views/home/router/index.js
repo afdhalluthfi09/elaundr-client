@@ -1,8 +1,12 @@
+import { requireAuth } from '@/router/auth';
 import {Home} from '../pages';
 export default[
     {
-        path:'/home',
+        path:'',
         name:'home',
-        component:Home
+        component:Home,
+        meta:{
+            middleware:[requireAuth]
+        }
     }
 ]

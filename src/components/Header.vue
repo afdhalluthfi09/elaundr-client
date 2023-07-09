@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import {mapGetters} from 'vuex';
+import {mapGetters,mapMutations} from 'vuex';
 export default {
   name: "HeaderComponent",
   created() {
@@ -17,17 +17,28 @@ export default {
     return {};
   },
   props: {},
-  methods: {},
+  methods: {
+    ...mapMutations(['setUsers']),
+  },
   computed:{
     ...mapGetters({
-      user:'auth/getUsers'
-    }),
+        user:'auth/getUsers'
+      }),
+    
     loadData(){
       if(localStorage.getItem('token') !== null){
-          return JSON.parse(localStorage.getItem('data'));
+          let users =JSON.parse(localStorage.getItem('data'));
+          return users;
       }else{
         return null;
       }
+    }
+  },
+  mounted(){
+    if(this.loadData != null){
+      this.setUsers(this.loadData.tokenId)
+    }else{
+      this.setUsers(null)
     }
   }
 };

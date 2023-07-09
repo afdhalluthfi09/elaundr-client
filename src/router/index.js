@@ -6,9 +6,19 @@ import setting from '../views/setting/route';
 import { requireAuth } from './auth';
 const routes =[
     ...auth,
-    ...home.map(route =>({...route,meta:{middleware:[requireAuth]}})),
-    ...pesanan,
-    ...setting
+    {
+      path:'/',
+      name:'main',
+      component:()=>import('../views/layout/MainView.vue'),
+      children:[
+        ...home,
+        ...pesanan,
+        ...setting
+      ],
+      meta:{
+        middleware:[requireAuth]
+      }
+    }
 ]
 
 const router =createRouter({
@@ -18,12 +28,13 @@ const router =createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-    if (to.meta.middleware) {
-      const middleware = to.meta.middleware;
-      const context = { to, from, next };
-      return middleware[0]({ ...context }); // Gunakan middleware pertama dalam daftar
-    }
-    return next();
-  });
+  if (to.meta.middleware) {
+    const middleware = to.meta.middleware;
+    console.log(middleware);
+    middleware.forEach(mw => mw(to, from, next));
+  }else {
+    next();
+  }
+});
 
 export default router

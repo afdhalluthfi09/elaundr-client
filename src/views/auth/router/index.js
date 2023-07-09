@@ -1,7 +1,7 @@
 import {Login,Register} from '../pages';
 export default [
     {
-        path:'/Login',
+        path:'/login',
         name:'login',
         component:Login
     },

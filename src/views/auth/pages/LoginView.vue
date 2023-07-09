@@ -1,7 +1,6 @@
 <template>
   <div class="container-login">
         <div class="contain-form">
-          {{ user }}
             <div class="banner">
                 <img src="../../../assets/gambar/iconic.png" alt="">
             </div>
@@ -59,7 +58,7 @@ export default {
     submit(){
       this.$store.dispatch('auth/actionLogin',{payload:{email:this.from.email,password:this.from.password}})
         .then(()=>{
-            Swal('Hello!', 'This is a SweetAlert!', 'success');
+            Swal('yey..', 'Selamat Datang.. berhasil masuk', 'succes');
             setTimeout(()=>{
               this.$router.push('/home')
             },5000)

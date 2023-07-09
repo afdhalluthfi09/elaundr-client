@@ -1,20 +1,15 @@
 <template>
-  <div class="container-setting">
-    <!-- header -->
-    <HeaderComponent/>
-    <!-- bar status -->
-    <StatusComponent/>
     <!-- main -->
     <div class="main">
             <div class="main-title">
                 <p>Layanan Kami</p>
             </div>
             <div class="contain-main">
-                <div @click="openModal('profil')" id="openModalBtn" class="square-icon">
+                <div @click.prevent="openModal('profil')" id="openModalBtn" class="square-icon">
                     <img src="../../../assets/gambar/icon/profile.svg" alt="">
                     <p>Profil</p>
                 </div>
-                <div @click="openModal('password')" class="square-icon">
+                <div @click.prevent="openModal('password')" class="square-icon">
                     <img src="../../../assets/gambar/icon/password.svg" alt="">
                     <p>Password</p>
                 </div>
@@ -22,9 +17,12 @@
                     <img src="../../../assets/gambar/icon/help.svg" alt="">
                     <p>Bantuan</p>
                 </div>
+                <div @click.prevent="openModal('logout')"  class="square-icon">
+                    <img src="../../../assets/gambar/icon/logout.svg" alt="">
+                    <p>Keluar</p>
+                </div>
             </div>
     </div>
-  </div>
   <transition name="modal">
     <div v-if="isModalOpen" id="myModal" class="modal">
       <div class="modal-content">
@@ -75,7 +73,7 @@
             </div>
             <div class="group-from">
               <div class="button-group-flex">
-                <button @click="closeModal" class="btn btn-batal">Batal</button>
+                <button @click.prevent="closeModal" class="btn btn-batal">Batal</button>
                 <button class="btn btn-kirim">Ubah</button>
               </div>
             </div>
@@ -99,33 +97,42 @@
             </div>
             <div class="group-from">
               <div class="button-group-flex">
-                <button @click="closeModal" class="btn btn-batal">Batal</button>
+                <button @click.prevent="closeModal" class="btn btn-batal">Batal</button>
                 <button class="btn btn-kirim">Ubah</button>
               </div>
             </div>
           </form>
           <form id="form" v-if="currentForm == 'help'">
             <div class="group-from">
-              <label for="current_password">Layanan</label>
-              <p>Saat ini Pelayan bisa melalui dari kami dengan cara menggubungi no berikiut : <stron>0811820083</stron></p>
+              <h5>Layanan</h5>
+              <p>Saat ini Pelayan bisa melalui dari kami dengan cara menggubungi no berikiut : <strong>0811820083</strong></p>
             </div>
             <div class="group-from">
               <div class="button-group-flex">
-                <button @click="closeModal" class="btn btn-batal">Batal</button>
+                <button @click.prevent="closeModal" class="btn btn-batal">Batal</button>
                 <button class="btn btn-kirim">Bantuan</button>
+              </div>
+            </div>
+          </form>
+          <form @submit.prevent="submitLogout" id="form" v-if="currentForm == 'logout'">
+            <div class="group-from">
+              <p>Yakin Keluar Dari Aplikasi ?</p>
+            </div>
+            <div class="group-from">
+              <div class="button-group-flex">
+                <button @click.prevent="closeModal" class="btn btn-batal">Batal</button>
+                <button type="submit" class="btn btn-kirim">Keluar</button>
               </div>
             </div>
           </form>
       </div>
     </div>
   </transition>
-  <NavbarComponent/>
 </template>
 
 <script>
-import HeaderComponent from '../../../components/Header.vue'
-import StatusComponent from '../../../components/Status.vue'
-import NavbarComponent from '../../../components/Navbar.vue'
+import {mapGetters,mapMutations,mapActions} from 'vuex'
+import Swal from 'sweetalert';
 export default {
   name: "SettingViewComponent",
   created() {},
@@ -136,9 +143,11 @@ export default {
       popupTitle: '',
     };
   },
-  components:{HeaderComponent,StatusComponent,NavbarComponent},
   props: {},
   methods: {
+    
+    ...mapMutations(['removeToken']),
+    ...mapActions(['removeActionToken']),
     openModal(formName) {
       this.currentForm = formName;
       this.isModalOpen = true;
@@ -148,13 +157,30 @@ export default {
         this.popupTitle = 'password';
       }else if( this.currentForm == 'help'){
         this.popupTitle = 'help';
+      }else if( this.currentForm == 'logout'){
+        this.popupTitle = 'keluar';
       }
     },
     closeModal() {
       this.isModalOpen = false;
     },
+    submitLogout(){
+      this.$store.dispatch('removeActionToken',{payload:{tokenId:this.tokenId}})
+        .then(()=>{
+          Swal('sampai jumpa kembali', 'Anda keluar', 'succes');
+            setTimeout(()=>{
+              this.$router.push('/login')
+            },3000)
+        })
+        .catch((error)=>{
+            console.log(error)
+        })
+
+    }
   },
+  computed:{
+    ...mapGetters({tokenId:'getUsers'})
+  }
 };
 </script>
-
 <style lang="scss" scoped></style>
