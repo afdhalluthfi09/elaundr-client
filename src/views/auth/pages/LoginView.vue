@@ -60,7 +60,7 @@ export default {
         .then(()=>{
             Swal('yey..', 'Selamat Datang.. berhasil masuk', 'succes');
             setTimeout(()=>{
-              this.$router.push('/home')
+              this.$router.push('/')
             },5000)
         }).catch((error)=>{
           console.log(error);
