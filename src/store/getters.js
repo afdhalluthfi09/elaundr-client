@@ -1,6 +1,6 @@
 const getters ={
     getBaseUrl : state =>{
-        return state.localUrl;
+        return state.prodUrl;
     },
     getUsers:(state)=>{
         return state.users;
