@@ -347,7 +347,7 @@ export default {
       this.from.weightFirst = this.weightFristReguler
       this.from.paket =this.currentForm
       this.from.costumer = this.getUsers
-      this.from.status ='p'
+      this.from.status ='d'
       this.$store.dispatch('laundry/actionAddLaundry',{payload:{
         photo:this.from.photo,
         status:this.from.status,

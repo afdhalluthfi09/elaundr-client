@@ -28,7 +28,7 @@
       <div class="modal-content">
         <span @click="closeModal" class="close">&times;</span>
           <h2>{{ popupTitle }}</h2>
-          <form id="form" v-if="currentForm == 'profil'">
+          <form @submit.prevent="submitProfile" id="form" v-if="currentForm == 'profil'">
             
             <div class="group-from">
               <label for="name">nama</label>
@@ -36,6 +36,8 @@
                 type="text"
                 id="name"
                 name="name"
+                v-model="form.name"
+                required
               />
             </div>
             <div class="group-from">
@@ -44,6 +46,8 @@
                 type="text"
                 id="notelp"
                 name="notelp"
+                v-model="form.notelp"
+                required
               />
             </div>
             <div class="group-from">
@@ -52,6 +56,8 @@
                 type="email"
                 id="email"
                 name="email"
+                v-model="form.email"
+                required
               />
             </div>
             <div class="group-from">
@@ -60,6 +66,8 @@
                 type="text"
                 id="age"
                 name="age"
+                v-model="form.age"
+                required
               />
             </div>
             <div class="group-from">
@@ -68,13 +76,15 @@
                 type="text"
                 id="address"
                 name="address"
+                v-model="form.address"
                 width="200"
+                required
               ></textarea>
             </div>
             <div class="group-from">
               <div class="button-group-flex">
                 <button @click.prevent="closeModal" class="btn btn-batal">Batal</button>
-                <button class="btn btn-kirim">Ubah</button>
+                <button type="submit" class="btn btn-kirim">Ubah</button>
               </div>
             </div>
           </form>
@@ -141,13 +151,19 @@ export default {
       isModalOpen: false,
       currentForm: '',
       popupTitle: '',
+      form:{
+        name:null,
+        notelp:null,
+        email:null,
+        age:null,
+        address:null
+      }
     };
   },
   props: {},
   methods: {
-    
     ...mapMutations(['removeToken']),
-    ...mapActions(['removeActionToken']),
+    ...mapActions(['removeActionToken','updateActionProfile']),
     openModal(formName) {
       this.currentForm = formName;
       this.isModalOpen = true;
@@ -167,7 +183,7 @@ export default {
     submitLogout(){
       this.$store.dispatch('removeActionToken',{payload:{tokenId:this.tokenId}})
         .then(()=>{
-          Swal('sampai jumpa kembali', 'Anda keluar', 'succes');
+          Swal('sampai jumpa kembali', 'Anda keluar', 'success');
             setTimeout(()=>{
               this.$router.push('/login')
             },3000)
@@ -176,6 +192,14 @@ export default {
             console.log(error)
         })
 
+    },
+    submitProfile(){
+      // console.log(this.form);
+      this.$store.dispatch('updateActionProfile',{payload:{name:this.form.name,
+        email:this.form.email,
+        notelp:this.form.notelp,
+        age:this.form.age,
+        address:this.form.address}})
     }
   },
   computed:{

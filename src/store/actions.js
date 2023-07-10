@@ -9,6 +9,8 @@ const actions ={
                 }
             })
             .then((res)=>{
+                localStorage.removeItem('token')
+                localStorage.removeItem('data')
                 if(res.status == 202){
                     commit('removeToken')
                     reslove(res)
@@ -24,6 +26,9 @@ const actions ={
                 }
             })
         });
+    },
+    updateActionProfile:(_,{payload})=>{
+        console.log(payload);
     }
 }
 export default actions;
