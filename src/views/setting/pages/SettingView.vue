@@ -379,7 +379,8 @@ export default {
       const message = 'Halo, saya butuh bantuan.'; // Ganti dengan pesan yang ingin Anda kirim
 
       const encodedMessage = encodeURIComponent(message);
-      return `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
+      let url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
+      window.open(url,'_blank')
     },
     validateSame(){
       if(this.reset.password === this.reset.new_password){
