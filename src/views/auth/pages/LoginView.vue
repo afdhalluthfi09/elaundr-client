@@ -28,13 +28,16 @@
                     
                 </div>
             </form>
+            <router-link to="/register">
+              <small>Belum Punya Akun ? Daftar Disini</small>
+            </router-link>
             <button class="btn-google">Google</button>
         </div>
-    </div>
+  </div>
 </template>
 
 <script>
-import {mapState,mapGetters,mapActions} from 'vuex'
+import {mapState,mapGetters} from 'vuex'
 import Swal from 'sweetalert';
 export default {
   name: "LoginView",
@@ -50,11 +53,7 @@ export default {
   },
   props: {},
   methods: {
-    ...mapActions({
-          actionLaundry:'laundry/actionLaundry'}),
-    callMutations(){
-      return this.actionLaundry();
-    },
+    
     submit(){
       this.$store.dispatch('auth/actionLogin',{payload:{email:this.from.email,password:this.from.password}})
         .then(()=>{
@@ -63,6 +62,7 @@ export default {
               this.$router.push('/')
             },5000)
         }).catch((error)=>{
+          Swal(`${error.response.data.message}`, 'coba periksa kembali inputan', 'warning');
           console.log(error);
         })
     }
@@ -73,7 +73,6 @@ export default {
     }),
     ...mapGetters({
         getBaseUrl: 'getBaseUrl',
-        getLaundry:'laundry/getLaundry',
         getError:'auth/getErrors',
         user:'auth/getUsers'
     }),
@@ -82,7 +81,6 @@ export default {
     }
   },
   mounted(){
-    this.callMutations();
   }
 };
 </script>

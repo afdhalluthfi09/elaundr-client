@@ -1,14 +1,8 @@
-import axios from "axios";
+import axios from "../axios";
 const actions ={
-     actionLogin:({commit,rootGetters},{payload})=>{
-        let baseUrl = rootGetters;
+     actionLogin:({commit},{payload})=>{
         return new Promise((resolve,reject)=>{
-            axios.post(`${baseUrl.getBaseUrl}/login-kostumer`,payload,{
-                headers:{
-                    'Content-Type':'application/json',
-                    'Accept':'application/json'
-                }
-            })
+            axios.post(`/login-kostumer`,payload)
             .then((res)=>{
                 if(res.status == 202){
                     commit('setUser',res.data.data);
@@ -26,6 +20,18 @@ const actions ={
                 }else{
                     reject(error);
                 }
+            })
+        })
+    },
+    registerActionAccoun:(_,{payload})=>{
+        console.log(payload);
+        return new Promise((reslove,reject)=>{
+            axios.post(`/register-kostumer`,payload).then((response)=>{
+                // console.log(response);
+                reslove(response.data)
+            }).catch((error)=>{
+                console.log(error);
+                reject(error)
             })
         })
     }

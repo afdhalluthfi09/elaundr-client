@@ -1,16 +1,9 @@
-import axios from "axios";
+import axios from "../axios";
 const actions ={
-    actionLaundry:({commit,rootGetters})=>{
-        let baseUrl =rootGetters;
+    actionLaundry:({commit})=>{
         return new Promise((resolve,reject)=>{
             axios
-                .get(`${baseUrl.getBaseUrl}/laundry`,{
-                    headers:{
-                        'Content-Type':'application/json',
-                        'Accept':'application/json',
-                        'Access-Control-Allow-Origin' :'*'
-                    }
-                })
+                .get(`/laundry`)
                 .then(response =>{
                     commit("getListLaundry",response.data);
                     resolve(response);
@@ -20,16 +13,10 @@ const actions ={
                 })
         })
     },
-    actionAddLaundry:({rootGetters},{payload})=>{
-        // console.log(payload);
-        let baseUrl =rootGetters;
+    actionAddLaundry:(_,{payload})=>{
         return new Promise ((resolve,reject)=>{
-            axios.post(`${baseUrl.getBaseUrl}/laundry`,payload,{
-                headers:{
-                    'Content-Type':'multipart/form-data',
-                    'Accept':'application/json',
-                    'Access-Control-Allow-Origin' :'*'
-                }
+            axios.post(`/laundry`,payload,{
+                headers:{'Content-Type':'multipart/form-data'}
             })
             .then((response)=>{
                 resolve(response)
