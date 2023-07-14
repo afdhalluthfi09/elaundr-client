@@ -10,6 +10,8 @@ const axios =axiosbase.create({
         'Access-Control-Allow-Origin' :'*'
     }
 })
+
+// kondisi untuk yang tidak harus pake token
 axios.interceptors.request.use((config)=>{
     if(config.url === '/login-kostumer'){
         delete config.headers.Authorization;
