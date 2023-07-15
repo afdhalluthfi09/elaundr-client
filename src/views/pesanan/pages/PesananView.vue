@@ -1,7 +1,7 @@
 <template>
     <!-- main -->
     <div class="main">
-      <div class="message-title">Pesan Aktif</div>
+      <div class="message-title">Pesan Aktif <button @click.prevent="notifAdmin"></button></div>
       <div class="contain-message">
         <ul>
           <li v-for="(item, index) in items" :key="index">
@@ -42,6 +42,9 @@ export default {
     toggleItem(index) {
       this.items[index].isExpanded = !this.items[index].isExpanded;
     },
+    notifAdmin(){
+      this.$store.dispatch('notifActionJemput',{payload:{id:1}}).then((response)=>{console.log(response)}).catch((error)=>{console.log(error)})
+    }
   },
 };
 </script>

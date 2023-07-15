@@ -52,6 +52,11 @@ const actions ={
             })
         })
     },
+    notifActionJemput:(_,{payload})=>{
+        return new Promise((resolve,reject)=>{
+            axios.post(`/notif-antar/${payload.id}`).then((response)=>{console.log(response);resolve(response.data)}).catch((error)=>{console.log(error);reject(error)})
+        })
+    }
     
 }
 export default actions;
