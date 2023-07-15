@@ -369,6 +369,7 @@ export default {
             icon: 'success',
           }).then(() => {
             this.closeModal()
+            this.notifAdmin()
           });
         })
         .catch((error)=>{
@@ -400,6 +401,7 @@ export default {
             icon: 'success',
           }).then(() => {
             this.closeModal()
+            this.notifAdmin()
           });
         })
         .catch((error)=>{
@@ -432,6 +434,7 @@ export default {
             icon: 'success',
           }).then(() => {
             this.closeModal()
+            this.notifAdmin()
           });
         })
         .catch((error)=>{
@@ -464,6 +467,7 @@ export default {
             icon: 'success',
           }).then(() => {
             this.closeModal()
+            this.notifAdmin()
           });
         })
         .catch((error)=>{
@@ -496,6 +500,7 @@ export default {
             icon: 'success',
           }).then(() => {
             this.closeModal()
+            this.notifAdmin()
           });
         })
         .catch((error)=>{
@@ -504,6 +509,9 @@ export default {
 
       //  console.log(this.from);
     },
+    notifAdmin(){
+      this.$store.dispatch('notifActionJemput',{payload:{id:1}}).then((response)=>{console.log(response)}).catch((error)=>{console.log(error)})
+    }
   },
   computed:{
     displayPriceFirst:{
