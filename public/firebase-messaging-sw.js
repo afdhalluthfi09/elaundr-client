@@ -6,12 +6,12 @@ importScripts('https://www.gstatic.com/firebasejs/8.10.1/firebase-messaging.js')
 // your app's Firebase config object.
 // https://firebase.google.com/docs/web/setup#config-object
 firebase.initializeApp({
-    apiKey: "AIzaSyC3exjydwPaTCwTIqX6zOxnmDNaB-JEcII",
-    authDomain: "e-laundry-client.firebaseapp.com",
-    projectId: "e-laundry-client",
-    storageBucket: "e-laundry-client.appspot.com",
-    messagingSenderId: "547200687551",
-    appId: "1:547200687551:web:5c04a31dc406b3af67550a"
+    apiKey: "AIzaSyBapvnjLuZsmW0zCJcruFtCbbw672FJ8E4",
+    authDomain: "e-laundry-driver.firebaseapp.com",
+    projectId: "e-laundry-driver",
+    storageBucket: "e-laundry-driver.appspot.com",
+    messagingSenderId: "1079880687729",
+    appId: "1:1079880687729:web:e01c7254a6b1e15bd6fbd0"
   });
 
 // Retrieve an instance of Firebase Messaging so that it can handle background

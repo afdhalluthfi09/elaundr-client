@@ -161,7 +161,7 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations, mapActions } from "vuex";
+import {mapMutations} from "vuex";
 import Swal from "sweetalert";
 import Swal2 from "sweetalert2";
 export default {
@@ -193,14 +193,13 @@ export default {
   props: {},
   methods: {
     ...mapMutations(["removeToken"]),
-    ...mapActions(["removeActionToken", "updateActionProfile", "getActionProfile","updateActionPassword"]),
     openModal(formName) {
       this.currentForm = formName;
       this.isModalOpen = true;
       if (this.currentForm == "profil") {
         this.popupTitle = "profil";
         this.$store
-          .dispatch("getActionProfile", { payload: { tokenId: this.tokenId } })
+          .dispatch("getActionProfile", { payload: { tokenId: this.getUser.tokenId } })
           .then((response) => {
             let dataProfile = response.data;
             console.log(dataProfile);
@@ -226,7 +225,7 @@ export default {
     },
     submitLogout() {
       this.$store
-        .dispatch("removeActionToken", { payload: { tokenId: this.tokenId } })
+        .dispatch("removeActionToken", { payload: { tokenId: this.getUser.tokenId } })
         .then(() => {
           Swal("sampai jumpa kembali", "Anda keluar", "success");
           setTimeout(() => {
@@ -241,9 +240,9 @@ export default {
       this.$store
         .dispatch("updateActionProfile", {
           payload: {
-            tokenId: this.tokenId,
+            tokenId: this.getUser.tokenId,
             name: this.form.name,
-            email: this.form.email,
+            email: (this.form.email == this.getUser.email) ? null : this.form.email,
             no_telp: this.form.no_telp,
             age: this.form.age,
             address: this.form.address,
@@ -278,7 +277,7 @@ export default {
     sumbitResetPassword() {
       // console.log(this.reset);
       this.$store.dispatch('updateActionPassword',{payload:{
-        tokenId:this.tokenId,
+        tokenId:this.getUser.tokenId,
         old_password:this.reset.old_password,
         new_password:this.reset.new_password,
         password:this.reset.password
@@ -389,7 +388,9 @@ export default {
     }
   },
   computed: {
-    ...mapGetters({ tokenId: "getUsers" }),
+    getUser(){
+      return JSON.parse(localStorage.getItem("data"));
+    }
     
   },
 };

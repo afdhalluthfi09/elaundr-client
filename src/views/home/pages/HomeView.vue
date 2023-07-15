@@ -256,9 +256,12 @@
 <script>
 import {mapGetters,mapActions} from 'vuex';
 import Swal from 'sweetalert2';
+import {messaging} from '../../../firebaseConfig';
 export default {
   name: "HomeViewComponent",
-  created() {},
+  created() {
+    messaging
+  },
   data() {
     return {
       isModalOpen: false,

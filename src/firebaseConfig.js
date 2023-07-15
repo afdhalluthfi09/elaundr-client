@@ -1,6 +1,7 @@
 // step 1: import sdk firebase dari situs resminya
 import { initializeApp } from "firebase/app";
 import { getMessaging, getToken, onMessage } from "firebase/messaging";
+import axios from "./store/axios";
 
 // step 2: konfigurasi firebase
 const firebaseConfig = {
@@ -28,6 +29,8 @@ getToken(messaging, {
   .then((currentToken) => {
     if (currentToken) {
       console.log("token :", currentToken);
+      let data = JSON.parse(localStorage.getItem('data'));
+      updateToken(currentToken,data.tokenId)
       // Send the token to your server and update the UI if necessary
       // ...
     } else {
@@ -40,5 +43,15 @@ getToken(messaging, {
     console.log("An error occurred while retrieving token. ", err);
     // ...
   });
+
+  async function updateToken(currentToken,tokenId) {
+    try {
+      await axios.post(`/webtoken-costumer/${tokenId}`,{fcm_token:currentToken}).then((respone)=>{console.log(respone.data);}).catch((error)=>console.log(error));
+      // Pembaruan token berhasil
+    } catch (error) {
+      // Penanganan kesalahan jika pembaruan token gagal
+      console.log(error);
+    }
+  }
 
 export { app, messaging };
