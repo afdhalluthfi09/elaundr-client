@@ -1,7 +1,7 @@
 <template>
     <!-- main -->
     <div class="main">
-      <div class="message-title">Pesan Aktif <button @click.prevent="notifAdmin"></button></div>
+      <div class="message-title">Pesan Aktif <button @click.prevent="notifAdmin">test</button></div>
       <div class="contain-message">
         <ul>
           <li v-for="(item, index) in items" :key="index">
