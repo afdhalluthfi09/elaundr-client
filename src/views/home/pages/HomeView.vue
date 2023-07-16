@@ -99,7 +99,7 @@
             <div class="group-from">
               <div class="button-group-flex">
                 <button @click.prevent="closeModal" class="btn btn-batal">Batal</button>
-                <button class="btn btn-kirim">Pesan</button>
+                <button class="btn button-54">Pesan</button>
               </div>
             </div>
           </form>
@@ -136,7 +136,7 @@
             <div class="group-from">
               <div class="button-group-flex">
                 <button @click.prevent="closeModal" class="btn btn-batal">Batal</button>
-                <button type="submit" class="btn btn-kirim">Pesan</button>
+                <button type="submit" class="btn button-54">Pesan</button>
               </div>
             </div>
           </form>
@@ -169,7 +169,7 @@
             <div class="group-from">
               <div class="button-group-flex">
                 <button @click.prevent="closeModal" class="btn btn-batal">Batal</button>
-                <button type="submit" class="btn btn-kirim">Pesan</button>
+                <button type="submit" class="btn button-54">Pesan</button>
               </div>
             </div>
           </form>
@@ -202,7 +202,7 @@
             <div class="group-from">
               <div class="button-group-flex">
                 <button @click.prevent="closeModal" class="btn btn-batal">Batal</button>
-                <button type="submit" class="btn btn-kirim">Pesan</button>
+                <button type="submit" class="btn button-54">Pesan</button>
               </div>
             </div>
           </form>
@@ -244,7 +244,7 @@
             <div class="group-from">
               <div class="button-group-flex">
                 <button @click.prevent="closeModal" class="btn btn-batal">Batal</button>
-                <button type="submit" class="btn btn-kirim">Pesan</button>
+                <button type="submit" class="btn button-54">Pesan</button>
               </div>
             </div>
           </form>
@@ -531,4 +531,28 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.button-54 {
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-decoration: none;
+  text-transform: uppercase;
+  background-color: #a2ff86;
+  cursor: pointer;
+  border: 3px solid #a2ff86;
+  padding: 0.25em 0.5em;
+  box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px,
+    5px 5px 0px 0px;
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+.button-54:active {
+  box-shadow: 0px 0px 0px 0px;
+  color: black;
+  top: 5px;
+  left: 5px;
+}
+</style>

@@ -18,8 +18,7 @@
                 <!-- password -->
                 <div class="form-group">
                     <label class="form-label" for="">Password</label>
-                    <input type="password" @input="validateInput" v-model="form.password" class="form-control" name="password"/>
-                    <small v-if="valid">Minimal 8 Karakter ,mengandung huruf besar,kecil,angka,karakter spesial sperti '@ # / dll'</small>
+                    <input type="password"  v-model="form.password" class="form-control" name="password"/>
                 </div>
                 <!-- konfirmasi -->
                 <div class="form-group">
