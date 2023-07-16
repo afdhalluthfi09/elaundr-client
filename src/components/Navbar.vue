@@ -7,12 +7,6 @@
       </router-link>
     </div>
     <div>
-      <router-link to="/pesanan">
-        <img src="../assets/gambar/icon/iconcuci.svg" alt="iconcuci" />
-        <p>Pesanan</p>
-      </router-link>
-    </div>
-    <div>
       <router-link to="/setting">
         <img src="../assets/gambar/icon/iconsetting.svg" alt="iconsetting" />
         <p>Akun</p>

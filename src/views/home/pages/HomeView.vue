@@ -26,36 +26,6 @@
           <p>Karpet</p>
         </div>
       </div>
-      <div class="message-title">Pesan Aktif</div>
-      <div class="contain-message">
-        <div class="card-body">
-          <div class="contain-body">
-            <img src="../../../assets/gambar/icon/icon-cuci.svg" alt="" />
-            <div class="display-flex-column">
-              <div class="detail-status">Pesanan No.0002142</div>
-              <div class="detail-status">Sudah selesai</div>
-            </div>
-          </div>
-        </div>
-        <div class="card-body">
-          <div class="contain-body">
-            <img src="../../../assets/gambar/icon/icon-cuci.svg" alt="" />
-            <div class="display-flex-column">
-              <div class="detail-status">Pesanan No.0002142</div>
-              <div class="detail-status">Sudah selesai</div>
-            </div>
-          </div>
-        </div>
-        <div class="card-body">
-          <div class="contain-body">
-            <img src="../../../assets/gambar/icon/icon-cuci.svg" alt="" />
-            <div class="display-flex-column">
-              <div class="detail-status">Pesanan No.0002142</div>
-              <div class="detail-status">Sudah selesai</div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
     <transition name="modal">
       <div v-if="isModalOpen" id="myModal" class="modal">
@@ -160,9 +130,6 @@
               <label for="location">Lokasi Penjemputan</label>
               <select @change="locationNow" name="location" id="location">
                 <option value="">Pilih Lokasi</option>
-                <option id="openModalBtnLokasiDefault" value="default">
-                  Lokasi Default
-                </option>
                 <option id="openModalBtnLokasiNow" value="localnow">Lokasi Terkini</option>
               </select>
             </div>
